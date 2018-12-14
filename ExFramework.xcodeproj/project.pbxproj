@@ -13,7 +13,7 @@
 		4847B5242175BF57008C6F23 /* Ex+JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4847B5232175BF57008C6F23 /* Ex+JSONParser.swift */; };
 		486F9132217F0965009834AE /* Ex+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9131217F0965009834AE /* Ex+CGRect.swift */; };
 		48DC9F3B217414560098DA38 /* ExFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DC9F39217414560098DA38 /* ExFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48DC9F45217415290098DA38 /* Ex+HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F44217415290098DA38 /* Ex+HttpManager.swift */; };
+		48DC9F45217415290098DA38 /* Ex+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F44217415290098DA38 /* Ex+NetworkManager.swift */; };
 		48DC9F542174158B0098DA38 /* Ex+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F4B2174158B0098DA38 /* Ex+UILabel.swift */; };
 		48DC9F552174158B0098DA38 /* Ex+UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F4C2174158B0098DA38 /* Ex+UIWindow.swift */; };
 		48DC9F562174158B0098DA38 /* Ex+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F4D2174158B0098DA38 /* Ex+UIApplication.swift */; };
@@ -37,7 +37,7 @@
 		48DC9F36217414560098DA38 /* ExFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48DC9F39217414560098DA38 /* ExFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExFramework.h; sourceTree = "<group>"; };
 		48DC9F3A217414560098DA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48DC9F44217415290098DA38 /* Ex+HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+HttpManager.swift"; sourceTree = "<group>"; };
+		48DC9F44217415290098DA38 /* Ex+NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NetworkManager.swift"; sourceTree = "<group>"; };
 		48DC9F4B2174158B0098DA38 /* Ex+UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+UILabel.swift"; sourceTree = "<group>"; };
 		48DC9F4C2174158B0098DA38 /* Ex+UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+UIWindow.swift"; sourceTree = "<group>"; };
 		48DC9F4D2174158B0098DA38 /* Ex+UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+UIApplication.swift"; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		48DC9F422174148E0098DA38 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				48DC9F44217415290098DA38 /* Ex+HttpManager.swift */,
+				48DC9F44217415290098DA38 /* Ex+NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48DC9F5B2174158B0098DA38 /* Ex+Int.swift in Sources */,
-				48DC9F45217415290098DA38 /* Ex+HttpManager.swift in Sources */,
+				48DC9F45217415290098DA38 /* Ex+NetworkManager.swift in Sources */,
 				48DC9F5F217415D60098DA38 /* Ex+Util.swift in Sources */,
 				48DC9F5C2174158B0098DA38 /* Ex+Date.swift in Sources */,
 				48DC9F542174158B0098DA38 /* Ex+UILabel.swift in Sources */,

@@ -57,9 +57,13 @@ public extension ExJSONParser{
     
     func toJSON(_ value: String) ->JSON?{
         let result = JSON(parseJSON: value)
-        if result.isEmpty{ return nil }
+        if result.isEmpty{
+            printError("failed to convert string to JSON")
+            return nil
+        }
         return result
     }
+    
 }
 
 /**
@@ -69,11 +73,18 @@ public extension ExJSONParser{
  */
 public extension ExJSONParser{
     
+    func toData(_ value: String) ->Data?{
+        guard let data = Data(base64Encoded: value) else{
+            printError("failed to convert string to data")
+            return nil
+        }
+        return data
+    }
+    
     func toData<O: Codable>(_ value: O) ->Data?{
         do {
             let jsonData = try jsonEncoder.encode(value)
             return jsonData
-            
         } catch let error {
             printError(error)
             return nil
@@ -84,12 +95,12 @@ public extension ExJSONParser{
         do {
             let jsonData = try value.rawData(options: .prettyPrinted)
             return jsonData
-            
         } catch let error {
             printError(error)
             return nil
         }
     }
+    
 }
 
 /**
@@ -106,7 +117,7 @@ public extension ExJSONParser{
     func toJsonString(_ value: JSON) ->String?{
         guard let json = self.toJSON(value),
             let jsonData = self.toData(json) else {
-                printError()
+                printError("failed to convert JSON to string")
                 return nil
         }
         return String(data: jsonData, encoding: .utf8)
@@ -114,7 +125,7 @@ public extension ExJSONParser{
     
     func toJsonString<O: Codable>(_ value: O) ->String?{
         guard let jsonData = self.toData(value) else {
-            printError()
+            printError("failed to convert object to string")
             return nil
         }
         return String(data: jsonData, encoding: .utf8)
@@ -124,9 +135,25 @@ public extension ExJSONParser{
 
 public extension ExJSONParser{
     
-    func toObject<T:Codable>(_ type: T.Type, from: Data) -> Codable?{
+    func toObject<O:Codable>(_ type: O.Type, from: JSON) -> Codable? {
+        guard let jsonData = toData(from) else {return nil}
+        return toObject(O.self, from: jsonData)
+    }
+    
+    func toObject<O:Codable>(_ type: O.Type, from: Data) -> Codable?{
         do {
-            let codable = try jsonDecoder.decode(T.self, from: from)
+            let codable = try jsonDecoder.decode(O.self, from: from)
+            return codable
+        } catch let error {
+            printError(error)
+            return nil
+        }
+    }
+    
+    func toObject<O:Codable>(_ type: O.Type, from: String) -> Codable?{
+        guard let data = toData(from) else {return nil}
+        do {
+            let codable = try jsonDecoder.decode(O.self, from: data)
             return codable
         } catch let error {
             printError(error)

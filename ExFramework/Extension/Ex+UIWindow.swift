@@ -11,7 +11,7 @@ public extension UIWindow{
     /*
      TopMost ViewConteoller 찾기.
      */
-    public var visibleViewController: UIViewController? {
+    var visibleViewController: UIViewController? {
         return UIWindow.getVisibleViewControllerFrom(self.rootViewController)
     }
     

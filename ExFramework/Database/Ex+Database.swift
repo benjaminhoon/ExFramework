@@ -15,11 +15,6 @@ public struct ExDatabase{
     private let DB = UserDefaults.standard
 }
 
-/**
- *
- * @param parameter
- * @returns retval
- */
 public extension ExDatabase{
     
     func save<T>(_ value:T, key:String) {
@@ -40,5 +35,9 @@ public extension ExDatabase{
     
     func getDouble(key:String) ->Double{
         return DB.double(forKey:key)
+    }
+    
+    func getObject(key:String) -> Any?{
+        return DB.object(forKey: key)
     }
 }

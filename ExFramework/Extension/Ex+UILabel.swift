@@ -18,15 +18,15 @@ public extension UILabel{
      */
     func highlightWord(words:String...,  colorHex:String = "000", isBold:Bool = false, spacing:CGFloat = 0, alignment:NSTextAlignment = .natural)
     {
-        guard self.text != nil else {
+        guard let text = self.text  else {
             printError("text is nil")
             return
         }
         
-        let attributedText = NSMutableAttributedString.init(string: self.text!)
+        let attributedText = NSMutableAttributedString.init(string: text)
         for word in words
         {
-            let range = (self.text! as NSString).range(of: word)
+            let range = (text as NSString).range(of: word)
             attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(hex: colorHex) , range: range)
             
             if isBold
@@ -38,7 +38,7 @@ public extension UILabel{
         style.lineSpacing = spacing
         style.alignment = alignment
         attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: style,
-                                    range: NSRange(location: 0, length: self.text!.count))
+                                    range: NSRange(location: 0, length: text.count))
         self.attributedText = attributedText
     }
     

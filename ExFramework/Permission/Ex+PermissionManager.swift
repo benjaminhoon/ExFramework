@@ -24,8 +24,7 @@ public extension ExPermissionManager{
      * @param
      * @returns
      */
-    func checkAddressBookPermission()
-    {
+    func checkAddressBookPermission(){
         let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         
         switch authorizationStatus {
@@ -73,8 +72,7 @@ public extension ExPermissionManager{
      * @param
      * @returns Bool
      */
-    func isSupportTouchId() -> Bool
-    {
+    func isSupportTouchId() -> Bool {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(
@@ -98,12 +96,12 @@ public extension ExPermissionManager{
      * @param
      * @returns
      */
-    func beginTouchID(_ closure:@escaping (_ isSuccess:Bool)->Void)
-    {
+    func beginTouchID(localizedReason:String = "Access requires authentication",
+                      _ closure:@escaping (_ isSuccess:Bool)->Void){
         let context = LAContext()
         context.evaluatePolicy(
             LAPolicy.deviceOwnerAuthenticationWithBiometrics,
-            localizedReason: "Access requires authentication",
+            localizedReason: localizedReason,
             reply: {(success, error) in
                 
                 guard error == nil else{

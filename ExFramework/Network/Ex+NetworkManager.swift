@@ -1,5 +1,5 @@
 //
-//  ExHttpManager.swift
+//  ExNetworkManager.swift
 //  ExFramework
 //
 //  Created by LJH on 2018. 10. 15..
@@ -10,24 +10,30 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public protocol ExHttpResponseDelegate:class {
-    func ExHttpResponseJSON(result:Result<Any>, _ url:URLConvertible)
+public protocol ExNetworkResponseDelegate:class {
+    func exHttpResponseJSON(response result:JSON, request url:URLConvertible)
 }
 
-public class ExHttpManager {
+public class ExNetworkManager {
+    
+    private var callback:Callback
+    private var sessionManager:SessionManager
     
     public typealias Callback = ((_ result: Result<Any>) ->Void)?
-    private var callback:Callback
-
-    public weak var delegate:ExHttpResponseDelegate?
-    public init() {}
+    public weak var delegate:ExNetworkResponseDelegate?
+    public init() {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest  = 30
+        self.sessionManager = Alamofire.SessionManager(configuration: config )
+        
+    }
     
     deinit {
         printFlag("--deinit")
     }
 }
 
-public extension ExHttpManager{
+public extension ExNetworkManager{
    
     /**
      * delegate pattern
@@ -39,13 +45,27 @@ public extension ExHttpManager{
                         params:Parameters? = nil,
                         encoding:ParameterEncoding = URLEncoding.default) {
         
-        
-        Alamofire.request(url, method: method, parameters: params, encoding: encoding , headers: nil)
-            .validate(statusCode: 200..<300)
+        self.sessionManager.request(url,
+                                    method: method,
+                                    parameters: params,
+                                    encoding: encoding,
+                                    headers: nil)
             .responseJSON { (response) in
-                self.delegate?.ExHttpResponseJSON(result: response.result, url)
+                
+                switch response.result{
+                case .success(let data):
+                    let resultJSON = JSON(data: data as! Data)
+                    self.delegate?.exHttpResponseJSON(response: resultJSON, request: url)
+                    break
+                case .failure(let error):
+                    printError(error.localizedDescription)
+                    break
+                    
+                }
         }
+    
     }
+    
     
     /**
      * closure pattern
@@ -60,17 +80,13 @@ public extension ExHttpManager{
         
         self.callback = completion
         
-        Alamofire.request(url, method: method, parameters: params, encoding: encoding , headers: nil)
-            .validate(statusCode: 200..<300)
-            .responseJSON { (response) in
-                self.callback?(response.result)
-        }
+       
     }
     
 }
 
 
-public extension ExHttpManager{
+public extension ExNetworkManager{
     
     /**
      * 네트워크 활성 여부
