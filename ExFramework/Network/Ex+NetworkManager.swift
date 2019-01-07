@@ -11,15 +11,15 @@ import Alamofire
 import SwiftyJSON
 
 public protocol ExNetworkResponseDelegate:class {
-    func exHttpResponseJSON(response result:JSON, request url:URLConvertible)
+    func exHttpResponseJSON(response JSON:JSON, request url:URLConvertible)
 }
 
 public class ExNetworkManager {
     
+    public typealias Callback = ((_ JSON:JSON, _ url:URLConvertible) ->Void)?
     private var callback:Callback
     private var sessionManager:SessionManager
     
-    public typealias Callback = ((_ result: Result<Any>) ->Void)?
     public weak var delegate:ExNetworkResponseDelegate?
     public init() {
         let config = URLSessionConfiguration.default
@@ -54,7 +54,7 @@ public extension ExNetworkManager{
                 
                 switch response.result{
                 case .success(let data):
-                    let resultJSON = JSON(data: data as! Data)
+                    let resultJSON = try! JSON(data: data as! Data)
                     self.delegate?.exHttpResponseJSON(response: resultJSON, request: url)
                     break
                 case .failure(let error):
@@ -79,7 +79,25 @@ public extension ExNetworkManager{
                         completion:Callback) {
         
         self.callback = completion
-        
+        self.sessionManager.request(url,
+                                    method: method,
+                                    parameters: params,
+                                    encoding: encoding,
+                                    headers: nil)
+            .responseJSON { (response) in
+                
+                switch response.result{
+                case .success(let data):
+                    let resultJSON = try! JSON(data: data as! Data)
+                    self.callback?(resultJSON, url)
+                    break
+                case .failure(let error):
+                    printError(error.localizedDescription)
+                    break
+                    
+                }
+                
+        }
        
     }
     
@@ -100,7 +118,6 @@ public extension ExNetworkManager{
             printError("NetworkReachabilityManager isn't init")
             return false
         }
-        
         return manager.isReachable
     }
     
