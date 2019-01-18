@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		4807DAB621770C8800415680 /* Ex+Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4807DAB521770C8800415680 /* Ex+Database.swift */; };
+		4820F07621ED608000D65C2E /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4820F07521ED608000D65C2E /* CounterView.swift */; };
+		4820F07821ED60AF00D65C2E /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4820F07721ED60AF00D65C2E /* PushButton.swift */; };
 		4847B5182175BA82008C6F23 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4847B5162175BA82008C6F23 /* SwiftyJSON.framework */; };
 		4847B5192175BA82008C6F23 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4847B5172175BA82008C6F23 /* Alamofire.framework */; };
 		4847B5242175BF57008C6F23 /* Ex+JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4847B5232175BF57008C6F23 /* Ex+JSONParser.swift */; };
 		486F9132217F0965009834AE /* Ex+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9131217F0965009834AE /* Ex+CGRect.swift */; };
+		488E2A8021E81B5C00E962E7 /* EdiyaCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2A7C21E81B5C00E962E7 /* EdiyaCategoryView.swift */; };
+		488E2A8121E81B5C00E962E7 /* EdiyaCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488E2A7D21E81B5C00E962E7 /* EdiyaCategoryView.xib */; };
+		488E2A8221E81B5C00E962E7 /* EdiyaCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488E2A7E21E81B5C00E962E7 /* EdiyaCategoryCell.xib */; };
+		488E2A8321E81B5C00E962E7 /* EdiyaCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2A7F21E81B5C00E962E7 /* EdiyaCategoryCell.swift */; };
 		48DC9F3B217414560098DA38 /* ExFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DC9F39217414560098DA38 /* ExFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48DC9F45217415290098DA38 /* Ex+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F44217415290098DA38 /* Ex+NetworkManager.swift */; };
 		48DC9F542174158B0098DA38 /* Ex+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F4B2174158B0098DA38 /* Ex+UILabel.swift */; };
@@ -30,10 +36,16 @@
 
 /* Begin PBXFileReference section */
 		4807DAB521770C8800415680 /* Ex+Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Database.swift"; sourceTree = "<group>"; };
+		4820F07521ED608000D65C2E /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		4820F07721ED60AF00D65C2E /* PushButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushButton.swift; sourceTree = "<group>"; };
 		4847B5162175BA82008C6F23 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		4847B5172175BA82008C6F23 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		4847B5232175BF57008C6F23 /* Ex+JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+JSONParser.swift"; sourceTree = "<group>"; };
 		486F9131217F0965009834AE /* Ex+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+CGRect.swift"; sourceTree = "<group>"; };
+		488E2A7C21E81B5C00E962E7 /* EdiyaCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdiyaCategoryView.swift; sourceTree = "<group>"; };
+		488E2A7D21E81B5C00E962E7 /* EdiyaCategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EdiyaCategoryView.xib; sourceTree = "<group>"; };
+		488E2A7E21E81B5C00E962E7 /* EdiyaCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EdiyaCategoryCell.xib; sourceTree = "<group>"; };
+		488E2A7F21E81B5C00E962E7 /* EdiyaCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdiyaCategoryCell.swift; sourceTree = "<group>"; };
 		48DC9F36217414560098DA38 /* ExFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48DC9F39217414560098DA38 /* ExFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExFramework.h; sourceTree = "<group>"; };
 		48DC9F3A217414560098DA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,12 +86,40 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		4820F08421ED6ADA00D65C2E /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				4820F07721ED60AF00D65C2E /* PushButton.swift */,
+				4820F07521ED608000D65C2E /* CounterView.swift */,
+			);
+			name = Sample;
+			sourceTree = "<group>";
+		};
 		4847B5222175BF34008C6F23 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
 				4847B5232175BF57008C6F23 /* Ex+JSONParser.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		488E2A7921E8181D00E962E7 /* Ediya */ = {
+			isa = PBXGroup;
+			children = (
+				488E2A7B21E81B4000E962E7 /* CategoryView */,
+			);
+			path = Ediya;
+			sourceTree = "<group>";
+		};
+		488E2A7B21E81B4000E962E7 /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				488E2A7F21E81B5C00E962E7 /* EdiyaCategoryCell.swift */,
+				488E2A7E21E81B5C00E962E7 /* EdiyaCategoryCell.xib */,
+				488E2A7C21E81B5C00E962E7 /* EdiyaCategoryView.swift */,
+				488E2A7D21E81B5C00E962E7 /* EdiyaCategoryView.xib */,
+			);
+			path = CategoryView;
 			sourceTree = "<group>";
 		};
 		48DC9F2C217414560098DA38 = {
@@ -102,7 +142,9 @@
 		48DC9F38217414560098DA38 /* ExFramework */ = {
 			isa = PBXGroup;
 			children = (
+				4820F08421ED6ADA00D65C2E /* Sample */,
 				48DC9F41217414720098DA38 /* External-Lib */,
+				488E2A7921E8181D00E962E7 /* Ediya */,
 				48DC9F5D217415BB0098DA38 /* Global */,
 				48DC9F60217416030098DA38 /* Enums */,
 				48DC9F4A217415710098DA38 /* Extension */,
@@ -243,6 +285,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488E2A8221E81B5C00E962E7 /* EdiyaCategoryCell.xib in Resources */,
+				488E2A8121E81B5C00E962E7 /* EdiyaCategoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,13 +305,17 @@
 				48DC9F582174158B0098DA38 /* Ex+UIColor.swift in Sources */,
 				48DC9F552174158B0098DA38 /* Ex+UIWindow.swift in Sources */,
 				48DC9F622174162E0098DA38 /* Ex+WeekDayType.swift in Sources */,
+				4820F07621ED608000D65C2E /* CounterView.swift in Sources */,
 				4807DAB621770C8800415680 /* Ex+Database.swift in Sources */,
 				48DC9F5A2174158B0098DA38 /* Ex+Bundle.swift in Sources */,
+				4820F07821ED60AF00D65C2E /* PushButton.swift in Sources */,
 				4847B5242175BF57008C6F23 /* Ex+JSONParser.swift in Sources */,
 				486F9132217F0965009834AE /* Ex+CGRect.swift in Sources */,
 				48DC9F572174158B0098DA38 /* Ex+String.swift in Sources */,
 				48DC9F562174158B0098DA38 /* Ex+UIApplication.swift in Sources */,
 				48DC9F592174158B0098DA38 /* Ex+UITextField.swift in Sources */,
+				488E2A8021E81B5C00E962E7 /* EdiyaCategoryView.swift in Sources */,
+				488E2A8321E81B5C00E962E7 /* EdiyaCategoryCell.swift in Sources */,
 				48DC9F65217424D40098DA38 /* Ex+PermissionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,44 +7,48 @@
 //
 import Foundation
 
+/*
+ * global APP Life Cycle
+ *
+func sampleNotificationCenter()
+{
+    NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
 
-//func sampleNotificationCenter()
-//{
-//    NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
-//
-//    NotificationCenter.default.addObserver(self, selector: #selector(appWillTerminate), name: .UIApplicationWillTerminate, object: nil)
-//
-//    NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
-//
-//    NotificationCenter.default.addObserver(self, selector: #selector(appEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
-//}
-//
-//
-//func appWillEnterForeground()
-//{
-//
-//}
-//
-//func appWillTerminate()
-//{
-//
-//}
-//
-//func appDidBecomeActive()
-//{
-//
-//}
-//
-//func appEnterBackground()
-//{
-//
-//}
+    NotificationCenter.default.addObserver(self, selector: #selector(appWillTerminate), name: .UIApplicationWillTerminate, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(appEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+}
 
 
-//after UI Thread
-func after(delay:TimeInterval, performBlock:@escaping () -> Void) {
+func appWillEnterForeground()
+{
+
+}
+
+func appWillTerminate()
+{
+
+}
+
+func appDidBecomeActive()
+{
+
+}
+
+func appEnterBackground()
+{
+
+}
+*/
+
+/**
+ * after UI Thread
+ */
+func after(delay:TimeInterval, completion:@escaping () -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-        performBlock()
+        completion()
     }
 }
 

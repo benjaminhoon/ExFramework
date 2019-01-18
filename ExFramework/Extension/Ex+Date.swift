@@ -8,25 +8,22 @@
 
 public extension Date
 {
-    func toString(dateFormat:String) -> String
-    {
+    func toString(dateFormat:String) -> String{
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from: self)
     }
     
-    var startOfMonth:Date?
-    {
+    var startOfMonth:Date?{
         get{
             let calendar = Calendar.current
-            let currentDateComponents = calendar.dateComponents([.year, .month], from: self as Date)
+            let currentDateComponents = calendar.dateComponents([.year, .month], from: self)
             let startOfMonth = calendar.date(from: currentDateComponents)
             return startOfMonth
         }
     }
     
-    var endOfMonth:Date?
-    {
+    var endOfMonth:Date?{
         get{
             guard let plusOneMonthDate = dateByAddingMonths(1) else { return nil }
             
@@ -66,9 +63,10 @@ public extension Date
     }
     
     
-    // 하루가 지났는지 체크 24시간 기준
-    var isOneDayPass:Bool
-    {
+    /*
+     * 24시간이 지났는지 확인
+     */
+    var isPass24Hours: Bool{
         get{
             let ONE_DAY_TIME:TimeInterval = -86400    // 24 hour
             
@@ -83,5 +81,27 @@ public extension Date
             }
         }
     }
+    
+    /*
+     * 하루가 지났는지 확인
+     */
+    var isPassOneDay: Bool{
+        get{
+            let calendar = Calendar.current
+            let selfDateComponents = calendar.dateComponents([.day], from: self)
+            let currentDateComponents = calendar.dateComponents([.day], from: Date())
+            guard let selfDay = selfDateComponents.day,
+                let currentDay = currentDateComponents.day else{
+                return false
+            }
+            
+            if selfDay == currentDay{
+                return false
+            }else{
+                return true
+            }
+        }
+    }
+    
 
 }

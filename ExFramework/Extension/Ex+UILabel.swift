@@ -16,8 +16,7 @@ public extension UILabel{
      - parameter spacing: CGFloat
      - parameter alignment: NSTextAlignment
      */
-    func highlightWord(words:String...,  colorHex:String = "000", isBold:Bool = false, spacing:CGFloat = 0, alignment:NSTextAlignment = .natural)
-    {
+    func highlightWord(words:String...,  colorHex:String = "000", isBold:Bool = false, spacing:CGFloat = 0, alignment:NSTextAlignment = .natural){
         guard let text = self.text  else {
             printError("text is nil")
             return

@@ -27,14 +27,20 @@ public extension UITextField{
     }
     
     
-    var isEmpty:Bool
-    {
+    var isEmpty:Bool{
         get{
             if self.text?.count == 0 {
                 self.becomeFirstResponder()
                 return true
             }
             return false
+        }
+    }
+    
+    var isValidPhoneNumber:Bool{
+        get{
+            
+            return true
         }
     }
 }

@@ -55,4 +55,11 @@ public extension String{
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
+    
+    func toDate(dateFormatter:DateFormatter) -> Date?{
+        guard let stringDate = dateFormatter.date(from: self) else{
+            return nil
+        }
+        return stringDate
+    }
 }
