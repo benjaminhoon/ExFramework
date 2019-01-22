@@ -18,6 +18,7 @@
 		488E2A8121E81B5C00E962E7 /* EdiyaCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488E2A7D21E81B5C00E962E7 /* EdiyaCategoryView.xib */; };
 		488E2A8221E81B5C00E962E7 /* EdiyaCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488E2A7E21E81B5C00E962E7 /* EdiyaCategoryCell.xib */; };
 		488E2A8321E81B5C00E962E7 /* EdiyaCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2A7F21E81B5C00E962E7 /* EdiyaCategoryCell.swift */; };
+		48A9F31721F5AE1500DFE9B3 /* BezierAppleLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A9F31621F5AE1500DFE9B3 /* BezierAppleLogo.swift */; };
 		48DC9F3B217414560098DA38 /* ExFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DC9F39217414560098DA38 /* ExFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48DC9F45217415290098DA38 /* Ex+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F44217415290098DA38 /* Ex+NetworkManager.swift */; };
 		48DC9F542174158B0098DA38 /* Ex+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC9F4B2174158B0098DA38 /* Ex+UILabel.swift */; };
@@ -46,6 +47,7 @@
 		488E2A7D21E81B5C00E962E7 /* EdiyaCategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EdiyaCategoryView.xib; sourceTree = "<group>"; };
 		488E2A7E21E81B5C00E962E7 /* EdiyaCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EdiyaCategoryCell.xib; sourceTree = "<group>"; };
 		488E2A7F21E81B5C00E962E7 /* EdiyaCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdiyaCategoryCell.swift; sourceTree = "<group>"; };
+		48A9F31621F5AE1500DFE9B3 /* BezierAppleLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierAppleLogo.swift; sourceTree = "<group>"; };
 		48DC9F36217414560098DA38 /* ExFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48DC9F39217414560098DA38 /* ExFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExFramework.h; sourceTree = "<group>"; };
 		48DC9F3A217414560098DA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				4820F07721ED60AF00D65C2E /* PushButton.swift */,
 				4820F07521ED608000D65C2E /* CounterView.swift */,
+				48A9F31621F5AE1500DFE9B3 /* BezierAppleLogo.swift */,
 			);
 			name = Sample;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				48DC9F562174158B0098DA38 /* Ex+UIApplication.swift in Sources */,
 				48DC9F592174158B0098DA38 /* Ex+UITextField.swift in Sources */,
 				488E2A8021E81B5C00E962E7 /* EdiyaCategoryView.swift in Sources */,
+				48A9F31721F5AE1500DFE9B3 /* BezierAppleLogo.swift in Sources */,
 				488E2A8321E81B5C00E962E7 /* EdiyaCategoryCell.swift in Sources */,
 				48DC9F65217424D40098DA38 /* Ex+PermissionManager.swift in Sources */,
 			);

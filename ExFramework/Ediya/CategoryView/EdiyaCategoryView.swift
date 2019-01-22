@@ -4,7 +4,9 @@
 //
 //  Created by 이디야 on 19/12/2018.
 //  Copyright © 2018 JH. All rights reserved.
-//
+
+
+import UIKit
 
 public class EdiyaCategoryView: UIView{
     
