@@ -8,6 +8,9 @@
 
 import Foundation
 
+class 
+
+//
 //func addAnimationPath()  {
 //    let layer = CAShapeLayer()
 //    layer.path  = path.cgPath
@@ -38,7 +41,7 @@ func makeAppleLogo()  {
     // Initialize the path.
     var path : UIBezierPath!
     path = UIBezierPath()
-    
+
     // Apple
     path.move(to: CGPoint(x: 110.89, y: 99.2))
     path.addCurve(to: CGPoint(x: 105.97, y: 108.09), controlPoint1: CGPoint(x: 109.5, y: 102.41), controlPoint2: CGPoint(x: 107.87, y: 105.37))
@@ -64,7 +67,7 @@ func makeAppleLogo()  {
     path.addCurve(to: CGPoint(x: 106.17, y: 90.76), controlPoint1: CGPoint(x: 99.89, y: 82), controlPoint2: CGPoint(x: 102.01, y: 86.88))
     path.addCurve(to: CGPoint(x: 112.5, y: 94.94), controlPoint1: CGPoint(x: 108.05, y: 92.56), controlPoint2: CGPoint(x: 110.16, y: 93.95))
     path.addCurve(to: CGPoint(x: 110.89, y: 99.2), controlPoint1: CGPoint(x: 111.99, y: 96.42), controlPoint2: CGPoint(x: 111.46, y: 97.84))
-    
+
     // Leaf
     path.move(to: CGPoint(x: 93.25, y: 29.36))
     path.addCurve(to: CGPoint(x: 88.25, y: 42.23), controlPoint1: CGPoint(x: 93.25, y: 33.96), controlPoint2: CGPoint(x: 91.58, y: 38.26))
@@ -75,6 +78,6 @@ func makeAppleLogo()  {
     path.addCurve(to: CGPoint(x: 93.15, y: 27.52), controlPoint1: CGPoint(x: 88.37, y: 28.35), controlPoint2: CGPoint(x: 90.83, y: 27.65))
     path.addCurve(to: CGPoint(x: 93.25, y: 29.36), controlPoint1: CGPoint(x: 93.22, y: 28.14), controlPoint2: CGPoint(x: 93.25, y: 28.75))
     path.addLine(to: CGPoint(x: 93.25, y: 29.36))
-    
+
     path.close()
 }

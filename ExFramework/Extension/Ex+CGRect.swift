@@ -13,9 +13,9 @@ import Foundation
 public extension CGRect{
 
     /*   topLeft       topRight
-     *      ///////////////
-     *      //          //
-     *      //////////////
+     *      ////////////////
+     *     //            //
+     *    ////////////////
      *   bottmLeft     bottomRight
      */
     

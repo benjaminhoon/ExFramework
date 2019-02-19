@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 /*
 // ex) Object
@@ -34,37 +33,16 @@ struct Employee: Codable {
 public struct ExJSONParser {
     private let jsonEncoder = JSONEncoder()
     private let jsonDecoder = JSONDecoder()
-    public init(){}
+    public init(){
+        if #available(iOS 11.0, *) {
+            jsonEncoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        } else {
+            jsonEncoder.outputFormatting = .prettyPrinted
+        }
+    }
 }
 
-/**
- * toJSON
- * @param Codable, String
- * @returns JSON
- */
-public extension ExJSONParser{
-    
-    func toJSON<O: Codable>(_ value: O) ->JSON?{
-        do {
-            let jsonData = try jsonEncoder.encode(value)
-            let result = try JSON(data: jsonData)
-            return result
-        } catch let error {
-            printError(error)
-            return nil
-        }
-    }
-    
-    func toJSON(_ value: String) ->JSON?{
-        let result = JSON(parseJSON: value)
-        if result.isEmpty{
-            printError("failed to convert string to JSON")
-            return nil
-        }
-        return result
-    }
-    
-}
+
 
 /**
  * toData
@@ -91,16 +69,6 @@ public extension ExJSONParser{
         }
     }
  
-    func toData(_ value: JSON) ->Data?{
-        do {
-            let jsonData = try value.rawData(options: .prettyPrinted)
-            return jsonData
-        } catch let error {
-            printError(error)
-            return nil
-        }
-    }
-    
 }
 
 /**
@@ -112,15 +80,6 @@ public extension ExJSONParser{
     
     func toJsonString(_ value: Data) ->String?{
         return String(data: value, encoding: .utf8)
-    }
-   
-    func toJsonString(_ value: JSON) ->String?{
-        guard let json = self.toJSON(value),
-            let jsonData = self.toData(json) else {
-                printError("failed to convert JSON to string")
-                return nil
-        }
-        return String(data: jsonData, encoding: .utf8)
     }
     
     func toJsonString<O: Codable>(_ value: O) ->String?{
@@ -135,11 +94,6 @@ public extension ExJSONParser{
 
 public extension ExJSONParser{
     
-    func toObject<O:Codable>(_ type: O.Type, from: JSON) -> Codable? {
-        guard let jsonData = toData(from) else {return nil}
-        return toObject(O.self, from: jsonData)
-    }
-    
     func toObject<O:Codable>(_ type: O.Type, from: Data) -> Codable?{
         do {
             let codable = try jsonDecoder.decode(O.self, from: from)
@@ -151,7 +105,7 @@ public extension ExJSONParser{
     }
     
     func toObject<O:Codable>(_ type: O.Type, from: String) -> Codable?{
-        guard let data = toData(from) else {return nil}
+        guard let data = toData(from) else { return nil }
         do {
             let codable = try jsonDecoder.decode(O.self, from: data)
             return codable

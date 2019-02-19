@@ -8,22 +8,19 @@
 
 public extension Int
 {
-    var toDouble:Double
-    {
+    var toDouble:Double{
         get{
             return Double(self)
         }
     }
     
-    var toFloat:Float
-    {
+    var toFloat:Float{
         get{
             return Float(self)
         }
     }
     
-    var toString:String
-    {
+    var toString:String{
         get{
             return String(self)
         }
@@ -34,8 +31,7 @@ public extension Int
      * @param
      * @returns Bool
      */
-    var toBool:Bool
-    {
+    var toBool:Bool{
         get{
             return self == 1 ? true : false
         }
@@ -46,7 +42,6 @@ public extension Int
         decimalFormatter.numberStyle = NumberFormatter.Style.decimal
         decimalFormatter.groupingSeparator = ","
         decimalFormatter.groupingSize = 3
-        
         return decimalFormatter.string(from: self as NSNumber) ?? ""
     }
     

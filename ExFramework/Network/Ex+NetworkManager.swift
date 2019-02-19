@@ -8,24 +8,28 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 public protocol ExNetworkResponseDelegate:class {
-    func exHttpResponseJSON(response JSON:JSON, request url:URLConvertible)
+    func exHttpResponseJSON(response jsonString:String, request url:URLConvertible)
 }
 
 public class ExNetworkManager {
     
-    public typealias Callback = ((_ JSON:JSON, _ url:URLConvertible) ->Void)?
     private var callback:Callback
-    private var sessionManager:SessionManager
+    private var sessionManager:SessionManager {
+        get{
+            let config = URLSessionConfiguration.default
+            config.timeoutIntervalForRequest  = 30
+            return Alamofire.SessionManager(configuration: config )
+        }
+    }
     
+    
+    public typealias Callback = ((_ result:String, _ url:URLConvertible) ->Void)?
     public weak var delegate:ExNetworkResponseDelegate?
+  
+    
     public init() {
-        let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest  = 30
-        self.sessionManager = Alamofire.SessionManager(configuration: config )
-        
     }
     
     deinit {
@@ -54,8 +58,8 @@ public extension ExNetworkManager{
                 
                 switch response.result{
                 case .success(let data):
-                    let resultJSON = try! JSON(data: data as! Data)
-                    self.delegate?.exHttpResponseJSON(response: resultJSON, request: url)
+                    let resultJSON = try! JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted)
+                    self.delegate?.exHttpResponseJSON(response: String(data: resultJSON, encoding: String.Encoding.utf8)!, request: url)
                     break
                 case .failure(let error):
                     printError(error.localizedDescription)
@@ -88,8 +92,8 @@ public extension ExNetworkManager{
                 
                 switch response.result{
                 case .success(let data):
-                    let resultJSON = try! JSON(data: data as! Data)
-                    self.callback?(resultJSON, url)
+                    let resultJSON = try! JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted)
+                    self.callback?(String(data: resultJSON, encoding: String.Encoding.utf8)!, url)
                     break
                 case .failure(let error):
                     printError(error.localizedDescription)

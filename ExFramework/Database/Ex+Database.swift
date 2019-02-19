@@ -12,32 +12,32 @@ public struct ExDatabase{
     static let shared = ExDatabase()
     private init(){}
     
-    private let DB = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
 }
 
 public extension ExDatabase{
     
     func save<T>(_ value:T, key:String) {
-        DB.set(value, forKey: key)
+        userDefaults.set(value, forKey: key)
     }
     
     func getBool(key:String) ->Bool{
-        return DB.bool(forKey: key)
+        return userDefaults.bool(forKey: key)
     }
     
     func getString(key:String) ->String{
-        return DB.string(forKey: key) ?? ""
+        return userDefaults.string(forKey: key) ?? "unknown"
     }
     
     func getInt(key:String) ->Int{
-        return DB.integer(forKey:key)
+        return userDefaults.integer(forKey:key)
     }
     
     func getDouble(key:String) ->Double{
-        return DB.double(forKey:key)
+        return userDefaults.double(forKey:key)
     }
     
     func getObject(key:String) -> Any?{
-        return DB.object(forKey: key)
+        return userDefaults.object(forKey: key)
     }
 }

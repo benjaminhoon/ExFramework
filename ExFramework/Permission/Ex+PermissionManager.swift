@@ -72,22 +72,24 @@ public extension ExPermissionManager{
      * @param
      * @returns Bool
      */
-    func isSupportTouchId() -> Bool {
+    func isSupportTouchId(_ closure:@escaping (_ isAvailable:Bool, _ error:Error? )->Void?) {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(
             LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error){
             printFlag("Available TouchId")
-            return true
+            closure(true, nil)
+            return
         }else{
             printFlag("unavailable TouchId")
-            switch error!{
-            case LAError.touchIDNotEnrolled: printError("등록된 지문이 없습니다."); break
-            case LAError.passcodeNotSet: printError("등록된 패스워드가 없습니다."); break
-            case LAError.touchIDNotAvailable: printError("터치아이디를 지원하지 않는 디바이스 입니다."); break
-            default: printError(error!.localizedDescription); break
-            }
-            return false
+            closure(false, error!)
+//            switch error!{
+//            case LAError.touchIDNotEnrolled: printError("등록된 지문이 없습니다."); break
+//            case LAError.passcodeNotSet: printError("등록된 패스워드가 없습니다."); break
+//            case LAError.touchIDNotAvailable: printError("터치아이디를 지원하지 않는 디바이스 입니다."); break
+//            default: printError(error!.localizedDescription); break
+//            }
+            return
         }
     }
     
@@ -96,33 +98,31 @@ public extension ExPermissionManager{
      * @param
      * @returns
      */
-    func beginTouchID(localizedReason:String = "Access requires authentication",
-                      _ closure:@escaping (_ isSuccess:Bool)->Void){
+    func beginTouchID(localizedReason:String = "Access requires authentication",_ closure:@escaping (_ isSuccess:Bool, _ error:Error? )->Void){
         let context = LAContext()
         context.evaluatePolicy(
             LAPolicy.deviceOwnerAuthenticationWithBiometrics,
             localizedReason: localizedReason,
             reply: {(success, error) in
                 
-                guard error == nil else{
-                    printFlag("fail")
-                    switch error!{
-                    case LAError.systemCancel: printError("인증 과정이 취소되었습니다."); break
-                    case LAError.userCancel: printError("인증에 실패하였습니다.."); break
-                    case LAError.userFallback: printError("터치아이디 대신 패스워드 인증을 선택하였습니다."); break
-                    default: printError(error!.localizedDescription); break
-                    }
+                guard let _ = error else{
+                    printError(error!.localizedDescription)
+//                    switch error!{
+//                    case LAError.systemCancel: printError("인증 과정이 취소되었습니다."); break
+//                    case LAError.userCancel: printError("인증에 실패하였습니다.."); break
+//                    case LAError.userFallback: printError("터치아이디 대신 패스워드 인증을 선택하였습니다."); break
+//                    default: printError(error!.localizedDescription); break
+//                    }
                     
                     DispatchQueue.main.async {
-                        closure(false)
+                        closure(false, error!)
                     }
-                    
                     return
                 }
                 printOK("success")
                 
                 DispatchQueue.main.async {
-                    closure(true)
+                    closure(true, nil)
                 }
         })
     }

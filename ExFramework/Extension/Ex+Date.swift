@@ -54,11 +54,9 @@ public extension Date
     
     
     fileprivate func dateByAddingMonths(_ monthsToAdd: Int) -> Date? {
-        
         let calendar = Calendar.current
         var months = DateComponents()
         months.month = monthsToAdd
-        
         return calendar.date(byAdding: months, to: self)
     }
     
